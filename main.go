@@ -1,11 +1,12 @@
 package main
 
+import "fmt"
+
 func main() {
 	cards := deck{}
 	cards = newDeck()
-	//cards.printDeck()
-	slicedDeck, remainingDeck := deal(cards, 5)
-	slicedDeck.printDeck()
-	remainingDeck.printDeck()
-
+	slicedDeck, remainingDeck := cards.deal(5)
+	remainingDeck.printDeckSize()
+	cards.printDeckSize()
+	fmt.Println(slicedDeck.toString())
 }
