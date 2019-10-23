@@ -57,8 +57,6 @@ func newDeckFromFile(filename string) deck {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	createdDeck := deck{}
-	deckArray := []string(strings.Split(string(fileContent), ","))
-	createdDeck = append(deckArray)
+	createdDeck := deck(strings.Split(string(fileContent), ","))
 	return createdDeck
 }
