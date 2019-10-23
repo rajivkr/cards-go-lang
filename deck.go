@@ -46,17 +46,17 @@ func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
 }
 
-func (d deck) saveToFile(filename string) error {
-	return ioutil.WriteFile(filename, []byte(d.toString()), 777)
+func (d deck) saveToFile(f string) error {
+	return ioutil.WriteFile(f, []byte(d.toString()), 777)
 }
 
-func newDeckFromFile(filename string) deck {
-	fileContent, err := ioutil.ReadFile(filename)
+func newDeckFromFile(f string) deck {
+	bs, err := ioutil.ReadFile(f)
 
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	createdDeck := deck(strings.Split(string(fileContent), ","))
-	return createdDeck
+	s := deck(strings.Split(string(bs), ","))
+	return s
 }
